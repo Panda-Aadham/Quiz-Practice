@@ -3,8 +3,8 @@ import './Home.css'
 import quizData from '../quizData/quizInfo.json'
 
 const Home = (setOpenQuiz) => {
-  const handleSubmit = () => {
-    setOpenQuiz(true)
+  const handleClick = (data) => {
+    setOpenQuiz([true, data])
   }
 
   return(
@@ -16,7 +16,7 @@ const Home = (setOpenQuiz) => {
           <div className='button-container'>
             <p className='button-item title'>{item.title}</p>
             <p className='button-item text'>{item.description}</p>
-            <button className='button-item button' type='submit' onSubmit={handleSubmit}>Open Quiz</button>
+            <button key={item.id} className='button-item button' onClick={() => handleClick(item)}>Open Quiz</button>
           </div>)
         })}
       </div>
